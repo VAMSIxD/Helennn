@@ -54,9 +54,6 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
                         "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
                 ]
            ]
-        ),
-     )
-
     return buttons
 
 
@@ -91,9 +88,6 @@ def telegram_markup_timer(_, chat_id, played, dur):
                         "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
                 ]
            ]
-        ),
-     )
-
     return buttons
 
 
@@ -119,9 +113,6 @@ def stream_markup(_, videoid, chat_id):
                         "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
                 ]
            ]
-        ),
-     )
-
     return buttons
             
 
@@ -145,9 +136,6 @@ def telegram_markup(_, chat_id):
                         "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
                 ]
            ]
-        ),
-     )
-
     return buttons
 
 
