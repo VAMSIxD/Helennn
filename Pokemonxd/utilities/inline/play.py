@@ -53,8 +53,8 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
                     InlineKeyboardButton(
                         "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
                 ]
-           ]
-           return buttons
+        ]
+        return buttons
 
 
 def telegram_markup_timer(_, chat_id, played, dur):
@@ -87,8 +87,8 @@ def telegram_markup_timer(_, chat_id, played, dur):
                     InlineKeyboardButton(
                         "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
                 ]
-           ]
-           return buttons
+        ]
+        return buttons
 
 
 ## Inline without Timer Bar
@@ -112,8 +112,8 @@ def stream_markup(_, videoid, chat_id):
                     InlineKeyboardButton(
                         "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
                 ]
-           ]
-           return buttons
+        ]
+        return buttons
             
 
 
@@ -135,8 +135,8 @@ def telegram_markup(_, chat_id):
                     InlineKeyboardButton(
                         "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
                 ]
-           ]
-           return buttons
+        ]
+        return buttons
 
 
 ## Search Query Inline
