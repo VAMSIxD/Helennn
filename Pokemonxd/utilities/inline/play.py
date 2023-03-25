@@ -38,47 +38,25 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     bar += line*(10-len(bar))
     buttons = [
         [
-            InlineKeyboardButton(
-                text=f"{played} {bar} {dur}",
-                callback_data="GetTimer",
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="▷",
-                callback_data=f"ADMIN Pause|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="ɪɪ",
-                callback_data=f"ADMIN Resume|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="✮",
-                callback_data=f"add_playlist {videoid}",
-            ),
-            InlineKeyboardButton(
-                text="‣‣",
-                callback_data=f"ADMIN Skip|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="▢",
-                callback_data=f"ADMIN Stop|{chat_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="✭ ᴜᴘᴅᴀᴛᴇs ✭", url=config.SUPPORT_CHANNEL
-            ),
-            InlineKeyboardButton(
-                text="✭ sᴜᴘᴘᴏʀᴛ ✭", url=config.SUPPORT_GROUP
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="✯ ᴄʟᴏsᴇ ✯", callback_data="close"
-            )
-        ],
-    ]
+                [
+                    InlineKeyboardButton(
+                        "🥀 ❰ 𝐅𝐞𝐞𝐋𝐢𝐧𝐠'𝐒 ❱ ✨", url=f"https://t.me/kaalxd"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=f"https://t.me/Esport_Server"),
+
+                    InlineKeyboardButton(
+                        "𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=f"https://t.me/AdityaDiscus"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
+                ]
+           ]
+        ),
+     )
+
     return buttons
 
 
@@ -97,43 +75,25 @@ def telegram_markup_timer(_, chat_id, played, dur):
     bar += line*(10-len(bar))
     buttons = [
         [
-            InlineKeyboardButton(
-                text=f"{played} {bar} {dur}",
-                callback_data="GetTimer",
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="▷",
-                callback_data=f"ADMIN Pause|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="ɪɪ",
-                callback_data=f"ADMIN Resume|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="‣‣",
-                callback_data=f"ADMIN Skip|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="▢",
-                callback_data=f"ADMIN Stop|{chat_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="✭ ᴜᴘᴅᴀᴛᴇs ✭", url=config.SUPPORT_CHANNEL
-            ),
-            InlineKeyboardButton(
-                text="✭ sᴜᴘᴘᴏʀᴛ ✭", url=config.SUPPORT_GROUP
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="✯ ᴄʟᴏsᴇ ✯", callback_data="close"
-            )
-        ],
-    ]
+                [
+                    InlineKeyboardButton(
+                        "🥀 ❰ 𝐅𝐞𝐞𝐋𝐢𝐧𝐠'𝐒 ❱ ✨", url=f"https://t.me/kaalxd"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=f"https://t.me/Esport_Server"),
+
+                    InlineKeyboardButton(
+                        "𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=f"https://t.me/AdityaDiscus"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
+                ]
+           ]
+        ),
+     )
+
     return buttons
 
 
@@ -143,41 +103,25 @@ def telegram_markup_timer(_, chat_id, played, dur):
 def stream_markup(_, videoid, chat_id):
     buttons = [
         [
-            InlineKeyboardButton(
-                text="▷",
-                callback_data=f"ADMIN Pause|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="ɪɪ",
-                callback_data=f"ADMIN Resume|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="✮",
-                callback_data=f"add_playlist {videoid}",
-            ),
-            InlineKeyboardButton(
-                text="‣‣",
-                callback_data=f"ADMIN Skip|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="▢",
-                callback_data=f"ADMIN Stop|{chat_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="✭ ᴜᴘᴅᴀᴛᴇs ✭", url=config.SUPPORT_CHANNEL
-            ),
-            InlineKeyboardButton(
-                text="✭ sᴜᴘᴘᴏʀᴛ ✭", url=config.SUPPORT_GROUP
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="✯ ᴄʟᴏsᴇ ✯", callback_data="close"
-            )
-        ],
-    ]
+                [
+                    InlineKeyboardButton(
+                        "🥀 ❰ 𝐅𝐞𝐞𝐋𝐢𝐧𝐠'𝐒 ❱ ✨", url=f"https://t.me/kaalxd"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=f"https://t.me/Esport_Server"),
+
+                    InlineKeyboardButton(
+                        "𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=f"https://t.me/AdityaDiscus"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
+                ]
+           ]
+        ),
+     )
+
     return buttons
             
 
@@ -185,43 +129,25 @@ def stream_markup(_, videoid, chat_id):
 def telegram_markup(_, chat_id):
     buttons = [
         [
-            InlineKeyboardButton(
-                text=f"{played} {bar} {dur}",
-                callback_data="GetTimer",
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="▷",
-                callback_data=f"ADMIN Pause|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="ɪɪ",
-                callback_data=f"ADMIN Resume|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="‣‣",
-                callback_data=f"ADMIN Skip|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="▢",
-                callback_data=f"ADMIN Stop|{chat_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="✭ ᴜᴘᴅᴀᴛᴇs ✭", url=config.SUPPORT_CHANNEL
-            ),
-            InlineKeyboardButton(
-                text="✭ sᴜᴘᴘᴏʀᴛ ✭", url=config.SUPPORT_GROUP
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="✯ ᴄʟᴏsᴇ ✯", callback_data="close"
-            )
-        ],
-    ]
+                [
+                    InlineKeyboardButton(
+                        "🥀 ❰ 𝐅𝐞𝐞𝐋𝐢𝐧𝐠'𝐒 ❱ ✨", url=f"https://t.me/kaalxd"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=f"https://t.me/Esport_Server"),
+
+                    InlineKeyboardButton(
+                        "𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=f"https://t.me/AdityaDiscus"),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
+                ]
+           ]
+        ),
+     )
+
     return buttons
 
 
