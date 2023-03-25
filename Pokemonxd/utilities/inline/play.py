@@ -38,23 +38,24 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     bar += line*(10-len(bar))
     buttons = [
         [
-                [
-                    InlineKeyboardButton(
-                        "🥀 ❰ 𝐅𝐞𝐞𝐋𝐢𝐧𝐠'𝐒 ❱ ✨", url=f"https://t.me/kaalxd"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=f"https://t.me/Esport_Server"),
-
-                    InlineKeyboardButton(
-                        "𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=f"https://t.me/AdityaDiscus"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
-                ]
-        ]
-        return buttons
+            InlineKeyboardButton(
+                text="🥀 ❰ 𝐎𝐰𝐧𝐞𝐫シ︎𝐱𝐃 ❱ ✨", url=f"https://t.me/kannaxkido"), 
+        ],
+        [
+            InlineKeyboardButton(
+                text="📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=config.SUPPORT_CHANNEL
+            ),
+            InlineKeyboardButton(
+                text="𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=config.SUPPORT_GROUP
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="✯ 𝐂𝐥𝐨𝐬𝐞 ✯", callback_data="close"
+            )
+        ],
+    ]
+    return buttons
 
 
 def telegram_markup_timer(_, chat_id, played, dur):
@@ -72,24 +73,24 @@ def telegram_markup_timer(_, chat_id, played, dur):
     bar += line*(10-len(bar))
     buttons = [
         [
-                [
-                    InlineKeyboardButton(
-                        "🥀 ❰ 𝐅𝐞𝐞𝐋𝐢𝐧𝐠'𝐒 ❱ ✨", url=f"https://t.me/kaalxd"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=f"https://t.me/Esport_Server"),
-
-                    InlineKeyboardButton(
-                        "𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=f"https://t.me/AdityaDiscus"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
-                ]
-        ]
-        return buttons
-
+            InlineKeyboardButton(
+                text="🥀 ❰ 𝐎𝐰𝐧𝐞𝐫シ︎𝐱𝐃 ❱ ✨", url=f"https://t.me/kannaxkido"), 
+        ],
+        [
+            InlineKeyboardButton(
+                text="📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=config.SUPPORT_CHANNEL
+            ),
+            InlineKeyboardButton(
+                text="𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=config.SUPPORT_GROUP
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="✯ 𝐂𝐥𝐨𝐬𝐞 ✯", callback_data="close"
+            )
+        ],
+    ]
+    return buttons
 
 ## Inline without Timer Bar
 
@@ -97,46 +98,48 @@ def telegram_markup_timer(_, chat_id, played, dur):
 def stream_markup(_, videoid, chat_id):
     buttons = [
         [
-                [
-                    InlineKeyboardButton(
-                        "🥀 ❰ 𝐅𝐞𝐞𝐋𝐢𝐧𝐠'𝐒 ❱ ✨", url=f"https://t.me/kaalxd"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=f"https://t.me/Esport_Server"),
-
-                    InlineKeyboardButton(
-                        "𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=f"https://t.me/AdityaDiscus"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
-                ]
-        ]
-        return buttons
+            InlineKeyboardButton(
+                text="🥀 ❰ 𝐎𝐰𝐧𝐞𝐫シ︎𝐱𝐃 ❱ ✨", url=f"https://t.me/kannaxkido"), 
+        ],
+        [
+            InlineKeyboardButton(
+                text="📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=config.SUPPORT_CHANNEL
+            ),
+            InlineKeyboardButton(
+                text="𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=config.SUPPORT_GROUP
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="✯ 𝐂𝐥𝐨𝐬𝐞 ✯", callback_data="close"
+            )
+        ],
+    ]
+    return buttons
             
 
 
 def telegram_markup(_, chat_id):
     buttons = [
         [
-                [
-                    InlineKeyboardButton(
-                        "🥀 ❰ 𝐅𝐞𝐞𝐋𝐢𝐧𝐠'𝐒 ❱ ✨", url=f"https://t.me/kaalxd"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=f"https://t.me/Esport_Server"),
-
-                    InlineKeyboardButton(
-                        "𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=f"https://t.me/AdityaDiscus"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "💥 ❰ 𝐎𝐰𝐧𝐞𝐫'𝐱𝐃 ❱ 💞", url=f"https://t.me/eSportsowner")
-                ]
-        ]
-        return buttons
+            InlineKeyboardButton(
+                text="🥀 ❰ 𝐎𝐰𝐧𝐞𝐫シ︎𝐱𝐃 ❱ ✨", url=f"https://t.me/kannaxkido"), 
+        ],
+        [
+            InlineKeyboardButton(
+                text="📡 𝐔𝐩𝐝𝐚𝐭𝐞𝐬", url=config.SUPPORT_CHANNEL
+            ),
+            InlineKeyboardButton(
+                text="𝐒𝐮𝐩𝐩𝐨𝐫𝐭 💬", url=config.SUPPORT_GROUP
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="✯ 𝐂𝐥𝐨𝐬𝐞 ✯", callback_data="close"
+            )
+        ],
+    ]
+    return buttons
 
 
 ## Search Query Inline
