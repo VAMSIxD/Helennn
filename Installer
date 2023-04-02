@@ -20,6 +20,6 @@ speedtest-cli
 spotipy
 tgcrypto
 git+https://github.com/ytdl-org/youtube-dl
-git+https://github.com/yt-dlp/yt-dlp@master
+git+https://github.com/ADITYAxSERVER/downloader
 git+https://github.com/joetats/youtube_search@master
 git+https://github.com/alexmercerind/youtube-search-python@main
