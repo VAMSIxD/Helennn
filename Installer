@@ -16,7 +16,7 @@ pyrogram==1.4.16
 python-dotenv
 pyyaml==5.3.1
 requests
-speedtest-cli
+git+https://github.com/sivel/speedtest-cli
 spotipy
 tgcrypto
 git+https://github.com/ytdl-org/youtube-dl
