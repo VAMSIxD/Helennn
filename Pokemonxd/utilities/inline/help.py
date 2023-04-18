@@ -25,7 +25,7 @@ def help_pannel(_, START: Union[bool, int] = None):
             [   
                 InlineKeyboardButton(
                     text="sᴜᴘᴘᴏʀᴛ࿐",
-                    url=f"https://t.me/blackcatnetwork",
+                    url=f"https://t.me/Telugu_Friends_Chatting",
                 ),
             ],
             [
@@ -51,7 +51,7 @@ def help_pannel(_, START: Union[bool, int] = None):
             [
                 InlineKeyboardButton(
                     text="ᴜᴘᴅᴀᴛᴇs࿐",
-                    url=f"https://t.me/AdityaDiscus",
+                    url=f"https://t.me/Telugu_Friends_Chatting",
                 ),
             ],
             mark,
