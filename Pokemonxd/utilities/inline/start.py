@@ -12,7 +12,7 @@ def start_pannel(_):
         [
             InlineKeyboardButton(
                 text="🥀 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 ✨",
-                url=f"https://t.me/Blackcatsupport",
+                url=f"https://t.me/Telugu_Friends_Chatting",
             )
         ],
         [
@@ -38,7 +38,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
         [
             InlineKeyboardButton(
                 text="𝗢𝘄𝗻𝗲𝗿𝐱𝗗",
-                url=f"https://t.me/kannaxkido"),
+                url=f"https://t.me/shreya_ghoshal_143"),
         ],
         [
             InlineKeyboardButton(
@@ -70,7 +70,7 @@ def private_panelx(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
                 callback_data="settings_back_helper"),
             InlineKeyboardButton(
                 text="💞 𝗢𝘄𝗻𝗲𝗿𝐱𝐃 💞",
-                url=f"https://t.me/Kannaxkido",   
+                url=f"https://t.me/shreya_ghoshal_143",   
                 
             )
         ]
