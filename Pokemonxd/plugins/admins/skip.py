@@ -18,7 +18,6 @@ SKIP_COMMAND = get_command("SKIP_COMMAND")
 @bot.on_message(
     filters.command(SKIP_COMMAND)
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @AdminRightsCheck
