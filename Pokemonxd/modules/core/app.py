@@ -11,46 +11,69 @@ assistantids = []
 
 class App(Client):
     def __init__(self):
-        # Initialize the base Client class
-        super().__init__(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING1),
-            no_updates=True
-        )
+        try:
+            # Initialize the base Client class
+            super().__init__(
+                api_id=config.API_ID,
+                api_hash=config.API_HASH,
+                session_name=str(config.STRING1),
+                no_updates=True
+            )
+        except TypeError as e:
+            print(f"Error initializing base Client: {e}")
         
-        # Initialize another Client instance
-        self.one = Client(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING1),
-            no_updates=True
-        )
-        self.two = Client(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING2),
-            no_updates=True,
-        )
-        self.three = Client(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING3),
-            no_updates=True,
-        )
-        self.four = Client(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING4),
-            no_updates=True,
-        )
-        self.five = Client(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING5),
-            no_updates=True,
-        )
+        try:
+            # Initialize multiple Client instances
+            self.one = Client(
+                api_id=config.API_ID,
+                api_hash=config.API_HASH,
+                session_name=str(config.STRING1),
+                no_updates=True
+            )
+        except TypeError as e:
+            print(f"Error initializing self.one Client: {e}")
+        
+        try:
+            self.two = Client(
+                api_id=config.API_ID,
+                api_hash=config.API_HASH,
+                session_name=str(config.STRING2),
+                no_updates=True
+            )
+        except TypeError as e:
+            print(f"Error initializing self.two Client: {e}")
+        
+        try:
+            self.three = Client(
+                api_id=config.API_ID,
+                api_hash=config.API_HASH,
+                session_name=str(config.STRING3),
+                no_updates=True
+            )
+        except TypeError as e:
+            print(f"Error initializing self.three Client: {e}")
+        
+        try:
+            self.four = Client(
+                api_id=config.API_ID,
+                api_hash=config.API_HASH,
+                session_name=str(config.STRING4),
+                no_updates=True
+            )
+        except TypeError as e:
+            print(f"Error initializing self.four Client: {e}")
+        
+        try:
+            self.five = Client(
+                api_id=config.API_ID,
+                api_hash=config.API_HASH,
+                session_name=str(config.STRING5),
+                no_updates=True
+            )
+        except TypeError as e:
+            print(f"Error initializing self.five Client: {e}")
 
+    
     async def start(self):
         LOGGER(__name__).info(f"🥀 𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝐂𝐥𝐢𝐞𝐧𝐭𝐬 🌷...")
         if config.STRING1:
@@ -213,3 +236,5 @@ class App(Client):
             LOGGER(__name__).info(
                 f"🥀 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟓 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🌿 𝐀𝐬 {self.five.name} ✨..."
             )
+
+app = App()
