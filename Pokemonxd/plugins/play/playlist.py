@@ -107,7 +107,6 @@ async def get_keyboard(_, user_id):
 @bot.on_message(
     filters.command(DELETEPLAYLIST_COMMAND)
     & filters.private
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @language
