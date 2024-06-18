@@ -11,11 +11,20 @@ assistantids = []
 
 class App(Client):
     def __init__(self):
+        # Initialize the base Client class
+        super().__init__(
+            api_id=config.API_ID,
+            api_hash=config.API_HASH,
+            session_name=str(config.STRING1),
+            no_updates=True
+        )
+        
+        # Initialize another Client instance
         self.one = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_name=str(config.STRING1),
-            no_updates=True,
+            no_updates=True
         )
         self.two = Client(
             api_id=config.API_ID,
