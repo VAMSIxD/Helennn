@@ -21,7 +21,7 @@ if os.path.exists("Internal"):
 API_ID = int(getenv("API_ID", "27438953"))
 API_HASH = getenv("API_HASH", "e0edd380d158c193ef372fd57f91030c")
 BOT_TOKEN = getenv("BOT_TOKEN", "5858201553:AAGYt0F5bfaVHuJylu6JztvH62nGq9s32E8")
-MONGO_DB_URL = getenv("MONGO_DB_URL", None)
+MONGO_DB_URL = getenv("MONGO_DB_URL", "mongodb+srv://developervro:developerrapuka@cluster9.gcj9754.mongodb.net/?retryWrites=true&w=majority&appName=Cluster9")
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", "1200"))
 SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "180"))
 LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", "-1001932859134"))
