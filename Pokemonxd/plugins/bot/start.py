@@ -28,7 +28,6 @@ loop = asyncio.get_running_loop()
 @bot.on_message(
     filters.command(get_command("START_COMMAND"))
     & filters.private
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @LanguageStart
