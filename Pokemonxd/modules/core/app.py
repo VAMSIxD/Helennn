@@ -1,6 +1,7 @@
 # Aditya Halder
 
 import sys
+import asyncio
 from pyrogram import Client
 from Pokemonxd.utilities import config
 from Pokemonxd.console import LOGGER
@@ -8,233 +9,93 @@ from Pokemonxd.console import LOGGER
 assistants = []
 assistantids = []
 
-
-class App(Client):
+class App:
     def __init__(self):
-        try:
-            # Initialize the base Client class
-            super().__init__(
-                api_id=config.API_ID,
-                api_hash=config.API_HASH,
-                session_name=str(config.STRING1),
-                no_updates=True
-            )
-        except TypeError as e:
-            print(f"Error initializing base Client: {e}")
-        
-        try:
-            # Initialize multiple Client instances
-            self.one = Client(
-                api_id=config.API_ID,
-                api_hash=config.API_HASH,
-                session_name=str(config.STRING1),
-                no_updates=True
-            )
-        except TypeError as e:
-            print(f"Error initializing self.one Client: {e}")
-        
-        try:
-            self.two = Client(
-                api_id=config.API_ID,
-                api_hash=config.API_HASH,
-                session_name=str(config.STRING2),
-                no_updates=True
-            )
-        except TypeError as e:
-            print(f"Error initializing self.two Client: {e}")
-        
-        try:
-            self.three = Client(
-                api_id=config.API_ID,
-                api_hash=config.API_HASH,
-                session_name=str(config.STRING3),
-                no_updates=True
-            )
-        except TypeError as e:
-            print(f"Error initializing self.three Client: {e}")
-        
-        try:
-            self.four = Client(
-                api_id=config.API_ID,
-                api_hash=config.API_HASH,
-                session_name=str(config.STRING4),
-                no_updates=True
-            )
-        except TypeError as e:
-            print(f"Error initializing self.four Client: {e}")
-        
-        try:
-            self.five = Client(
-                api_id=config.API_ID,
-                api_hash=config.API_HASH,
-                session_name=str(config.STRING5),
-                no_updates=True
-            )
-        except TypeError as e:
-            print(f"Error initializing self.five Client: {e}")
+        self.one = Client(
+            "assistant_1",
+            api_id=config.API_ID,
+            api_hash=config.API_HASH,
+            no_updates=True,
+            session_string=config.STRING1
+        )
+        self.two = Client(
+            "assistant_2",
+            api_id=config.API_ID,
+            api_hash=config.API_HASH,
+            no_updates=True,
+            session_string=config.STRING2
+        )
+        self.three = Client(
+            "assistant_3",
+            api_id=config.API_ID,
+            api_hash=config.API_HASH,
+            no_updates=True,
+            session_string=config.STRING3
+        )
+        self.four = Client(
+            "assistant_4",
+            api_id=config.API_ID,
+            api_hash=config.API_HASH,
+            no_updates=True,
+            session_string=config.STRING4
+        )
+        self.five = Client(
+            "assistant_5",
+            api_id=config.API_ID,
+            api_hash=config.API_HASH,
+            no_updates=True,
+            session_string=config.STRING5
+        )
 
-    
-    async def start(self):
+    async def start_all(self):
         LOGGER(__name__).info(f"🥀 𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝐂𝐥𝐢𝐞𝐧𝐭𝐬 🌷...")
-        if config.STRING1:
-            await self.one.start()
-            get_me = await self.one.get_me()
-            self.one.username = get_me.username
-            self.one.id = get_me.id
+        await self._start_client(self.one, config.STRING1, 1)
+        await self._start_client(self.two, config.STRING2, 2)
+        await self._start_client(self.three, config.STRING3, 3)
+        await self._start_client(self.four, config.STRING4, 4)
+        await self._start_client(self.five, config.STRING5, 5)
+
+    async def _start_client(self, client, string, index):
+        if string:
+            await client.start()
+            get_me = await client.get_me()
+            client.username = get_me.username
+            client.id = get_me.id
             assistantids.append(get_me.id)
-            if get_me.last_name:
-                self.one.name = (
-                    get_me.first_name + " " + get_me.last_name
-                )
-            else:
-                self.one.name = get_me.first_name
+            client.name = get_me.first_name + (" " + get_me.last_name if get_me.last_name else "")
             try:
-                await self.one.join_chat("tgshadow_fighters")
-                await self.one.join_chat("Tc_pokemon")
+                await client.join_chat("tgshadow_fighters")
+                await client.join_chat("Tc_pokemon")
             except:
                 pass
-            assistants.append(1)
+            assistants.append(index)
             try:
-                await self.one.send_message(
+                await client.send_message(
                     config.LOG_GROUP_ID,
-                    f"**━━━━━━━━━━━━━━━━━━━**\n**✅ 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟏 𝐇𝐚𝐬 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🥳**\n**━━━━━━━━━━━━━━━━━━━**\n**🥀 𝐍𝐚𝐦𝐞 ›** {self.one.name}\n**🌸 𝐋𝐢𝐧𝐤 : ›** @{self.one.username}\n**🌷 𝐈𝐃✩ : ›** `{self.one.id}`\n**━━━━━━━━━━━━━━━━━━━**\n**🔥 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 : [𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫](https://t.me/Tc_pokemon).**\n**━━━━━━━━━━━━━━━━━━━**",
-                  disable_web_page_preview=True
+                    f"**━━━━━━━━━━━━━━━━━━━**\n"
+                    f"**✅ 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 {index} 𝐇𝐚𝐬 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🥳**\n"
+                    f"**━━━━━━━━━━━━━━━━━━━**\n"
+                    f"**🥀 𝐍𝐚𝐦𝐞 ›** {client.name}\n"
+                    f"**🌸 𝐋𝐢𝐧𝐤 : ›** @{client.username}\n"
+                    f"**🌷 𝐈𝐃✩ : ›** `{client.id}`\n"
+                    f"**━━━━━━━━━━━━━━━━━━━**\n"
+                    f"**🔥 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 : [𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫](https://t.me/Tc_pokemon).**\n"
+                    f"**━━━━━━━━━━━━━━━━━━━**",
+                    disable_web_page_preview=True
                 )
             except:
                 LOGGER(__name__).error(
-                    f"🥀𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟏 𝐅𝐚𝐢𝐥𝐞𝐝 𝐓𝐨 𝐀𝐜𝐜𝐞𝐬𝐬\n𝐋𝐨𝐠'𝐬 𝐆𝐫𝐨𝐮𝐩 ✨ ...\n\n🌷 𝐏𝐥𝐞𝐚𝐬𝐞 𝐀𝐝𝐝 𝐚𝐧𝐝 𝐏𝐫𝐨𝐦𝐨𝐭𝐞 𝐀𝐬\n𝐀𝐧 𝐀𝐝𝐦𝐢𝐧 💞 ..."
+                    f"🥀𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 {index} 𝐅𝐚𝐢𝐥𝐞𝐝 𝐓𝐨 𝐀𝐜𝐜𝐞𝐬𝐬\n𝐋𝐨𝐠'𝐬 𝐆𝐫𝐨𝐮𝐩 ✨ ...\n\n"
+                    f"🌷 𝐏𝐥𝐞𝐚𝐬𝐞 𝐀𝐝𝐝 𝐚𝐧𝐝 𝐏𝐫𝐨𝐦𝐨𝐭𝐞 𝐀𝐬\n𝐀𝐧 𝐀𝐝𝐦𝐢𝐧 💞 ..."
                 )
                 sys.exit()
             LOGGER(__name__).info(
-                f"🥀 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟏 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🌿 𝐀𝐬 {self.one.name} ✨..."
-            )
-        if config.STRING2:
-            await self.two.start()
-            get_me = await self.two.get_me()
-            self.two.username = get_me.username
-            self.two.id = get_me.id
-            assistantids.append(get_me.id)
-            if get_me.last_name:
-                self.two.name = (
-                    get_me.first_name + " " + get_me.last_name
-                )
-            else:
-                self.two.name = get_me.first_name
-            try:
-                await self.two.join_chat("tgshadow_fighters")
-                await self.two.join_chat("Tc_pokemon")
-            except:
-                pass
-            assistants.append(2)
-            try:
-                await self.two.send_message(
-                    config.LOG_GROUP_ID,
-                    f"**━━━━━━━━━━━━━━━━━━━**\n**✅ 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟐 𝐇𝐚𝐬 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🥳**\n**━━━━━━━━━━━━━━━━━━━**\n**🥀 𝐍𝐚𝐦𝐞 ›** {self.two.name}\n**🌸 𝐋𝐢𝐧𝐤 : ›** @{self.two.username}\n**🌷 𝐈𝐃✩ : ›** `{self.two.id}`\n**━━━━━━━━━━━━━━━━━━━**\n**🔥 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 : [𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫](https://t.me/Tc_pokemon).**\n**━━━━━━━━━━━━━━━━━━━**",
-                  disable_web_page_preview=True
-                )
-            except:
-                LOGGER(__name__).error(
-                    f"🥀𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟐 𝐅𝐚𝐢𝐥𝐞𝐝 𝐓𝐨 𝐀𝐜𝐜𝐞𝐬𝐬\n𝐋𝐨𝐠'𝐬 𝐆𝐫𝐨𝐮𝐩 ✨ ...\n\n🌷 𝐏𝐥𝐞𝐚𝐬𝐞 𝐀𝐝𝐝 𝐚𝐧𝐝 𝐏𝐫𝐨𝐦𝐨𝐭𝐞 𝐀𝐬\n𝐀𝐧 𝐀𝐝𝐦𝐢𝐧 💞 ..."
-                )
-                sys.exit()
-            LOGGER(__name__).info(
-                f"🥀 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟐 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🌿 𝐀𝐬 {self.two.name} ✨..."
-            )
-        if config.STRING3:
-            await self.three.start()
-            get_me = await self.three.get_me()
-            self.three.username = get_me.username
-            self.three.id = get_me.id
-            assistantids.append(get_me.id)
-            if get_me.last_name:
-                self.three.name = (
-                    get_me.first_name + " " + get_me.last_name
-                )
-            else:
-                self.three.name = get_me.first_name
-            try:
-                await self.three.join_chat("tgshadow_fighters")
-                await self.three.join_chat("Tc_pokemon")
-            except:
-                pass
-            assistants.append(3)
-            try:
-                await self.three.send_message(
-                    config.LOG_GROUP_ID,
-                    f"**━━━━━━━━━━━━━━━━━━━**\n**✅ 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟑 𝐇𝐚𝐬 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🥳**\n**━━━━━━━━━━━━━━━━━━━**\n**🥀 𝐍𝐚𝐦𝐞 ›** {self.three.name}\n**🌸 𝐋𝐢𝐧𝐤 : ›** @{self.three.username}\n**🌷 𝐈𝐃✩ : ›** `{self.three.id}`\n**━━━━━━━━━━━━━━━━━━━**\n**🔥 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 : [𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫](https://t.me/Tc_pokemon).**\n**━━━━━━━━━━━━━━━━━━━**",
-                  disable_web_page_preview=True
-                )
-            except:
-                LOGGER(__name__).error(
-                    f"🥀𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟑 𝐅𝐚𝐢𝐥𝐞𝐝 𝐓𝐨 𝐀𝐜𝐜𝐞𝐬𝐬\n𝐋𝐨𝐠'𝐬 𝐆𝐫𝐨𝐮𝐩 ✨ ...\n\n🌷 𝐏𝐥𝐞𝐚𝐬𝐞 𝐀𝐝𝐝 𝐚𝐧𝐝 𝐏𝐫𝐨𝐦𝐨𝐭𝐞 𝐀𝐬\n𝐀𝐧 𝐀𝐝𝐦𝐢𝐧 💞 ..."
-                )
-                sys.exit()
-            LOGGER(__name__).info(
-                f"🥀 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟑 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🌿 𝐀𝐬 {self.three.name} ✨..."
-            )
-        if config.STRING4:
-            await self.four.start()
-            get_me = await self.four.get_me()
-            self.four.username = get_me.username
-            self.four.id = get_me.id
-            assistantids.append(get_me.id)
-            if get_me.last_name:
-                self.four.name = (
-                    get_me.first_name + " " + get_me.last_name
-                )
-            else:
-                self.four.name = get_me.first_name
-            try:
-                await self.four.join_chat("tgshadow_fighters")
-                await self.four.join_chat("Tc_pokemon")
-            except:
-                pass
-            assistants.append(4)
-            try:
-                await self.four.send_message(
-                    config.LOG_GROUP_ID,
-                    f"**━━━━━━━━━━━━━━━━━━━**\n**✅ 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟒 𝐇𝐚𝐬 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🥳**\n**━━━━━━━━━━━━━━━━━━━**\n**🥀 𝐍𝐚𝐦𝐞 ›** {self.four.name}\n**🌸 𝐋𝐢𝐧𝐤 : ›** @{self.four.username}\n**🌷 𝐈𝐃✩ : ›** `{self.four.id}`\n**━━━━━━━━━━━━━━━━━━━**\n**🔥 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 : [𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫](https://t.me/Tc_pokemon).**\n**━━━━━━━━━━━━━━━━━━━**",
-                  disable_web_page_preview=True
-                )
-            except:
-                LOGGER(__name__).error(
-                    f"🥀𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟒 𝐅𝐚𝐢𝐥𝐞𝐝 𝐓𝐨 𝐀𝐜𝐜𝐞𝐬𝐬\n𝐋𝐨𝐠'𝐬 𝐆𝐫𝐨𝐮𝐩 ✨ ...\n\n🌷 𝐏𝐥𝐞𝐚𝐬𝐞 𝐀𝐝𝐝 𝐚𝐧𝐝 𝐏𝐫𝐨𝐦𝐨𝐭𝐞 𝐀𝐬\n𝐀𝐧 𝐀𝐝𝐦𝐢𝐧 💞 ..."
-                )
-                sys.exit()
-            LOGGER(__name__).info(
-                f"🥀 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟒 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🌿 𝐀𝐬 {self.four.name} ✨..."
-            )
-        if config.STRING5:
-            await self.five.start()
-            get_me = await self.five.get_me()
-            self.five.username = get_me.username
-            self.five.id = get_me.id
-            assistantids.append(get_me.id)
-            if get_me.last_name:
-                self.five.name = (
-                    get_me.first_name + " " + get_me.last_name
-                )
-            else:
-                self.five.name = get_me.first_name
-            try:
-                await self.five.join_chat("tgshadow_fighters")
-                await self.five.join_chat("Tc_pokemon")
-            except:
-                pass
-            assistants.append(5)
-            try:
-                await self.five.send_message(
-                    config.LOG_GROUP_ID,
-                    f"**━━━━━━━━━━━━━━━━━━━**\n**✅ 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟓 𝐇𝐚𝐬 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🥳**\n**━━━━━━━━━━━━━━━━━━━**\n**🥀 𝐍𝐚𝐦𝐞 ›** {self.one.name}\n**🌸 𝐋𝐢𝐧𝐤 : ›** @{self.one.username}\n**🌷 𝐈𝐃✩ : ›** `{self.one.id}`\n━━━━━━━━━━━━━━━━━━━\n**🔥 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 : [𝐏𝐨𝐤𝐞𝐦𝐨𝐧 𝐒𝐞𝐫𝐯𝐞𝐫(https://t.me/Tc_pokemon).**\n**━━━━━━━━━━━━━━━━━━━**",
-                  disable_web_page_preview=True
-                )
-            except:
-                LOGGER(__name__).error(
-                    f"🥀𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟓 𝐅𝐚𝐢𝐥𝐞𝐝 𝐓𝐨 𝐀𝐜𝐜𝐞𝐬𝐬\n𝐋𝐨𝐠'𝐬 𝐆𝐫𝐨𝐮𝐩 ✨ ...\n\n🌷 𝐏𝐥𝐞𝐚𝐬𝐞 𝐀𝐝𝐝 𝐚𝐧𝐝 𝐏𝐫𝐨𝐦𝐨𝐭𝐞 𝐀𝐬\n𝐀𝐧 𝐀𝐝𝐦𝐢𝐧 💞 ..."
-                )
-                sys.exit()
-            LOGGER(__name__).info(
-                f"🥀 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 𝟓 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🌿 𝐀𝐬 {self.five.name} ✨..."
+                f"🥀 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭 {index} 𝐒𝐭𝐚𝐫𝐭𝐞𝐝 🌿 𝐀𝐬 {client.name} ✨..."
             )
 
-app = App()
+# Ensure an event loop is available
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    app = App()
+    loop.run_until_complete(app.start_all())
+    
