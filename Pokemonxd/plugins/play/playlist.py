@@ -61,7 +61,6 @@ async def check_playlist(client, message: Message, _):
 @bot.on_message(
     filters.command(DELETEPLAYLIST_COMMAND)
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @language
