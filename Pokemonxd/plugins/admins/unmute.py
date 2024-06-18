@@ -15,7 +15,6 @@ UNMUTE_COMMAND = get_command("UNMUTE_COMMAND")
 @bot.on_message(
     filters.command(UNMUTE_COMMAND)
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @AdminRightsCheck
