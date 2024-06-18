@@ -2,18 +2,19 @@ import asyncio
 import importlib
 import sys
 
-from pyrogram import idle
+from pyrogram import Client, idle
 from pytgcalls.exceptions import NoActiveGroupCall
 
 from Pokemonxd.utilities import config
 from Pokemonxd.utilities.config.config import BANNED_USERS
-from Pokemonxd import app, bot, LOGGER
+from Pokemonxd import bot, LOGGER
 from Pokemonxd.modules.core.call import poke
 from Pokemonxd.plugins import ALL_MODULES
 from Pokemonxd.modules.database import get_banned_users, get_gbanned
 
 loop = asyncio.get_event_loop()
 
+app = Client("my_account")
 
 async def init():
     if (
@@ -70,3 +71,4 @@ async def init():
 if __name__ == "__main__":
     loop.run_until_complete(init())
     LOGGER("Pokemonxd").info("💐 𝐒𝐲𝐬𝐭𝐞𝐦 𝐒𝐭𝐨𝐩𝐩𝐞𝐝, 𝐆𝐨𝐨𝐝𝐛𝐲𝐞❗...")
+    
