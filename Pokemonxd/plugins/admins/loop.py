@@ -15,15 +15,19 @@ LOOP_COMMAND = get_command("LOOP_COMMAND")
 @bot.on_message(
     filters.command(LOOP_COMMAND)
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @AdminRightsCheck
 async def admins(cli, message: Message, _, chat_id):
+    if message.edit_date:
+        return  # Skip processing if the message has been edited
+    
     usage = _["admin_24"]
     if len(message.command) != 2:
         return await message.reply_text(usage)
+    
     state = message.text.split(None, 1)[1].strip()
+    
     if state.isnumeric():
         state = int(state)
         if 1 <= state <= 10:
@@ -34,9 +38,7 @@ async def admins(cli, message: Message, _, chat_id):
                 state = 10
             await set_loop(chat_id, state)
             return await message.reply_text(
-                _["admin_25"].format(
-                    message.from_user.first_name, state
-                )
+                _["admin_25"].format(message.from_user.first_name, state)
             )
         else:
             return await message.reply_text(_["admin_26"])
